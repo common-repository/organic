@@ -1,0 +1,90 @@
+{
+    "name": "orgnc/wordpress-plugin",
+    "description": "Wordpress Plugin for Organic Platform",
+    "type": "wordpress-plugin",
+    "require": {
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-zip": "*",
+        "gmostafa/php-graphql-client": "^1.10",
+        "fluentdom/fluentdom": "^8.0",
+        "fluentdom/html5": "^2.0",
+        "fluentdom/selectors-phpcss": "^2.0",
+        "fluentdom/selectors-symfony": "^4.0",
+        "liborm85/composer-vendor-cleaner": "1.7.1",
+        "php-webdriver/webdriver": "^1.13.0",
+        "sentry/sdk": "3.2.0",
+        "sentry/sentry": "3.5.0",
+        "seravo/wp-custom-bulk-actions": "^0.1.4"
+    },
+    "authors": [
+        {
+            "name": "Organic Engineering",
+            "email": "tech@organic.ly"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Organic\\": "Organic/",
+            "Organic\\SDK\\": "Organic/SDK/"
+        },
+        "files": [
+            "Organic/compat-polyfills.php",
+            "Organic/types.php",
+            "Organic/helpers.php",
+            "Organic/public.php"
+        ]
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "phpcompatibility/php-compatibility": "*",
+        "phpunit/phpunit": "^8.5",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "3.6.0",
+        "wp-coding-standards/wpcs": "2.3.0"
+    },
+    "scripts": {
+        "lint": [
+            "phpcs --standard=./phpcs.xml"
+        ],
+        "lint-autofix": [
+            "phpcbf --standard=./phpcs.xml"
+        ],
+        "phpunit": [
+            "phpunit -c ./phpunit.xml"
+        ],
+        "eslint": [
+            "cd blocks && npm install && npm run lint:js"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "liborm85/composer-vendor-cleaner": true,
+            "php-http/discovery": true
+        },
+        "platform": {
+            "php": "7.2.5"
+        },
+        "match-case": false
+    },
+    "extra": {
+        "dev-files": {
+            "/": [
+                ".github/",
+                "examples/",
+                "tests/",
+                ".editorconfig",
+                ".gitignore",
+                "*.md",
+                "Makefile",
+                "composer.json",
+                "composer.lock"
+            ],
+            "fluentdom/*": [
+                "phive.xml",
+                "tools/"
+            ]
+        }
+    }
+}
